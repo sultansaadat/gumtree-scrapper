@@ -1,0 +1,4 @@
+requests
+html5lib
+beautifulsoup
+beautifulsoup4
