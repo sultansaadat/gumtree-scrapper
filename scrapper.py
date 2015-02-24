@@ -148,12 +148,12 @@ test.tel_others = test.load_csv("others", test.tel_others)
 
 def scrapPages(test, fromIdx, toIdx):
     test.urlList = []
-    # test.tel_082 = []
-    # test.tel_083 = []
-    # test.tel_084 = []
-    # test.tel_0818 = []
-    # test.tel_0810 = []
-    # test.tel_others = []
+    test.tel_082 = []
+    test.tel_083 = []
+    test.tel_084 = []
+    test.tel_0818 = []
+    test.tel_0810 = []
+    test.tel_others = []
     result = test.grabURLs(fromIdx,toIdx)
     test.grabPhones()
     test.generateCSVs()
