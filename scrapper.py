@@ -11,6 +11,7 @@ REQUEST_HEADERS = {'User-agent': USER_AGENT,}
 class SearchListing:
 
     website = "http://www.gumtree.co.za"
+    parsedURLS = []
     urlList = []
     tel_082 = []
     tel_0818 = []
@@ -53,15 +54,17 @@ class SearchListing:
 
     def grabPhones(self):
         for url in self.urlList:
-            request = requests.get(url, headers=REQUEST_HEADERS)
-            if request.status_code == 200:
-                souped = BeautifulSoup(request.text, "html5lib")
-                telephone = souped.find_all("a", class_="telephone")
-                if len(telephone) > 0:
-                    href = telephone[0].get("href")
-                    telephone = href[4:]
-                    self.appendTelephone(telephone)
-                        # print "telephones Size: " + str(len(self.telephones)) + " curr: " + href[4:] + " original:" + href
+            if not url in self.parsedURLS:
+                self.parsedURLS.append(url);
+                request = requests.get(url, headers=REQUEST_HEADERS)
+                if request.status_code == 200:
+                    souped = BeautifulSoup(request.text, "html5lib")
+                    telephone = souped.find_all("a", class_="telephone")
+                    if len(telephone) > 0:
+                        href = telephone[0].get("href")
+                        telephone = href[4:]
+                        self.appendTelephone(telephone)
+                            # print "telephones Size: " + str(len(self.telephones)) + " curr: " + href[4:] + " original:" + href
         
     def generateCSVs(self):
         self.saveToCSV("vodacom_082", self.tel_082)
@@ -130,12 +133,12 @@ class SearchListing:
 
 test = SearchListing()
 
-test.create_csv("vodacom_082")
-test.create_csv("vodacom_0818")
-test.create_csv("mtn_083")
-test.create_csv("mtn_0810")
-test.create_csv("cell_c_084")
-test.create_csv("others")
+# test.create_csv("vodacom_082")
+# test.create_csv("vodacom_0818")
+# test.create_csv("mtn_083")
+# test.create_csv("mtn_0810")
+# test.create_csv("cell_c_084")
+# test.create_csv("others")
 
 test.tel_082 = test.load_csv("vodacom_082", test.tel_082)
 test.tel_0818 = test.load_csv("vodacom_0818", test.tel_0818)
@@ -160,7 +163,7 @@ def scrapPages(test, fromIdx, toIdx):
     print "Processed "+ str(fromIdx) + " => " + str(toIdx)
     
         
-for x in xrange(0,5000):
+for x in xrange(5000,6000):
     scrapPages(test, x,x+1)
 # scrapPages(test, 2,4)
 # scrapPages(test, 4,6)
