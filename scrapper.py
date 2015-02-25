@@ -139,12 +139,12 @@ class SearchListing:
 
 test = SearchListing()
 
-# test.create_csv("vodacom_082")
-# test.create_csv("vodacom_0818")
-# test.create_csv("mtn_083")
-# test.create_csv("mtn_0810")
-# test.create_csv("cell_c_084")
-# test.create_csv("others")
+test.create_csv("vodacom_082")
+test.create_csv("vodacom_0818")
+test.create_csv("mtn_083")
+test.create_csv("mtn_0810")
+test.create_csv("cell_c_084")
+test.create_csv("others")
 
 test.tel_082 = test.load_csv("vodacom_082", test.tel_082)
 test.tel_0818 = test.load_csv("vodacom_0818", test.tel_0818)
@@ -169,7 +169,7 @@ def scrapPages(test, fromIdx, toIdx):
     print "Processed "+ str(fromIdx) + " => " + str(toIdx)
     
         
-for x in xrange(5705, 20000):
+for x in xrange(9000, 20000):
     scrapPages(test, x,x+1)
 # scrapPages(test, 2,4)
 # scrapPages(test, 4,6)
