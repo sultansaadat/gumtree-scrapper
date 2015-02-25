@@ -163,7 +163,7 @@ def scrapPages(test, fromIdx, toIdx):
     print "Processed "+ str(fromIdx) + " => " + str(toIdx)
     
         
-for x in xrange(34,5000):
+for x in xrange(5000, 20000):
     scrapPages(test, x,x+1)
 # scrapPages(test, 2,4)
 # scrapPages(test, 4,6)
