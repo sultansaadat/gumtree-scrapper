@@ -84,21 +84,27 @@ class SearchListing:
              print ". " ,
         elif extention == "082" and not tel in self.tel_082:
             self.tel_082.append(tel)
+            print "* " ,
             # print "082 => " + tel + " ext: " + extention + ", ext2: " + extention2
         elif extention == "083" and not tel in self.tel_083:
             self.tel_083.append(tel)
+            print "* " ,
             # print "083 => " + tel + " ext: " + extention + ", ext2: " + extention2
         elif extention == "084" and not tel in self.tel_084:
             self.tel_084.append(tel)
+            print "* " ,
             # print "084 => " + tel + " ext: " + extention + ", ext2: " + extention2
         elif extention2 == "0818" and not tel in self.tel_0818:
             self.tel_0818.append(tel)
+            print "* " ,
             # print "0818 => " + tel + " ext: " + extention + ", ext2: " + extention2
         elif extention2 == "0810" and not tel in self.tel_0810:
             self.tel_0810.append(tel)
+            print "* " ,
             # print "0810 => " + tel + " ext: " + extention + ", ext2: " + extention2
         else:
             self.tel_others.append(tel)
+            print "* " ,
             # print "others => " + tel + " ext: " + extention + ", ext2: " + extention2
             
     def saveToCSV(self, filename, tel_list):
@@ -163,7 +169,7 @@ def scrapPages(test, fromIdx, toIdx):
     print "Processed "+ str(fromIdx) + " => " + str(toIdx)
     
         
-for x in xrange(5000, 20000):
+for x in xrange(5705, 20000):
     scrapPages(test, x,x+1)
 # scrapPages(test, 2,4)
 # scrapPages(test, 4,6)
